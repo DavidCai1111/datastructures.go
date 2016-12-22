@@ -94,6 +94,39 @@ func (s BSTSuite) TestDeleteTwoChildrenNodeWithRighLeftIsNotNil() {
 	s.Equal(ds.IntComparable(250), s.tree.root.right.right.right.val)
 }
 
+func (s BSTSuite) TestPreOrderTraversal() {
+	sli := []int{}
+
+	s.tree.PreOrderTraversal(func(c ds.Comparable) {
+		i := c.(ds.IntComparable)
+		sli = append(sli, int(i))
+	})
+
+	s.Equal([]int{100, 50, 20, 70, 150, 120, 200}, sli)
+}
+
+func (s BSTSuite) TestInOrderTraversal() {
+	sli := []int{}
+
+	s.tree.InOrderTraversal(func(c ds.Comparable) {
+		i := c.(ds.IntComparable)
+		sli = append(sli, int(i))
+	})
+
+	s.Equal([]int{20, 50, 70, 100, 120, 150, 200}, sli)
+}
+
+func (s BSTSuite) TestPostOrderTraversal() {
+	sli := []int{}
+
+	s.tree.PostOrderTraversal(func(c ds.Comparable) {
+		i := c.(ds.IntComparable)
+		sli = append(sli, int(i))
+	})
+
+	s.Equal([]int{20, 70, 50, 120, 200, 150, 100}, sli)
+}
+
 func TestBST(t *testing.T) {
 	suite.Run(t, new(BSTSuite))
 }

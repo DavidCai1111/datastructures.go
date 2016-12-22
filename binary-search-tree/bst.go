@@ -157,6 +157,72 @@ func (n *node) find(val ds.Comparable) *node {
 	return nil
 }
 
+// PreOrderTraversal runs function f of each node's value in the tree
+// by pre order traversal.
+func (t Tree) PreOrderTraversal(f func(ds.Comparable)) {
+	t.root.preOrderTraversal(f)
+}
+
+func (n node) preOrderTraversal(f func(ds.Comparable)) {
+	if n.val == nil {
+		return
+	}
+
+	f(n.val)
+
+	if n.left != nil {
+		n.left.preOrderTraversal(f)
+	}
+
+	if n.right != nil {
+		n.right.preOrderTraversal(f)
+	}
+}
+
+// InOrderTraversal runs function f of each node's value in the tree
+// by in order traversal.
+func (t Tree) InOrderTraversal(f func(ds.Comparable)) {
+	t.root.inOrderTraversal(f)
+}
+
+func (n node) inOrderTraversal(f func(ds.Comparable)) {
+	if n.val == nil {
+		return
+	}
+
+	if n.left != nil {
+		n.left.inOrderTraversal(f)
+	}
+
+	f(n.val)
+
+	if n.right != nil {
+		n.right.inOrderTraversal(f)
+	}
+}
+
+// PostOrderTraversal runs function f of each node's value in the tree
+// by post order traversal.
+func (t Tree) PostOrderTraversal(f func(ds.Comparable)) {
+	t.root.postOrderTraversal(f)
+}
+
+func (n node) postOrderTraversal(f func(ds.Comparable)) {
+	if n.val == nil {
+		return
+	}
+
+	if n.left != nil {
+		n.left.postOrderTraversal(f)
+	}
+
+	if n.right != nil {
+		n.right.postOrderTraversal(f)
+	}
+
+	f(n.val)
+}
+
 func ensureNode(n *node) *node {
 	if n == nil {
 		n = &node{}
