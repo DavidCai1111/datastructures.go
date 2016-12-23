@@ -1,0 +1,13 @@
+
+sudo: false
+language: go
+go:
+  - 1.7
+before_install:
+  - go get -t -v ./...
+  - go get github.com/mattn/goveralls
+script:
+  - go test -v -race -coverprofile=datastructures.coverprofile
+  - go test -v -race -coverprofile=bst.coverprofile ./binary-search-tree
+  - gover
+  - goveralls -coverprofile=gover.coverprofile -service=travis-ci
