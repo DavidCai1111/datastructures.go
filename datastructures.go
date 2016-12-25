@@ -5,6 +5,28 @@ type Comparable interface {
 	Compare(Comparable) int
 }
 
+// Comparables represents []Comparable
+type Comparables []Comparable
+
+// Len is to implements Sort.Interface .
+func (cs Comparables) Len() int {
+	return len(cs)
+}
+
+// Less is to implements Sort.Interface .
+func (cs Comparables) Less(i, j int) bool {
+	if cs[i].Compare(cs[j]) < 0 {
+		return true
+	}
+
+	return false
+}
+
+// Swap is to implements Sort.Interface .
+func (cs Comparables) Swap(i, j int) {
+	cs[i], cs[j] = cs[j], cs[i]
+}
+
 // IntComparable represents a comparable int.
 type IntComparable int
 
