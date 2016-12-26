@@ -8,4 +8,4 @@ A collection of useful and concise Golang data structures.
 
 - [Binary search tree](https://github.com/DavidCai1993/datastructures.go/tree/master/binary-search-tree)
 - [B tree (2-3 tree)](https://github.com/DavidCai1993/datastructures.go/tree/master/b-tree)
-- [Binary min-heap](https://github.com/DavidCai1993/datastructures.go/tree/master/binary-heap)
+- [Min-heap](https://github.com/DavidCai1993/datastructures.go/tree/master/min-heap)
