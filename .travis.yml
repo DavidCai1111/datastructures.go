@@ -10,5 +10,7 @@ before_install:
 script:
   - go test -v -race -coverprofile=datastructures.coverprofile
   - go test -v -race -coverprofile=bst.coverprofile ./binary-search-tree
+  - go test -v -race -coverprofile=mh.coverprofile ./min-heap
+  - go test -v -race -coverprofile=avl.coverprofile ./avl-tree
   - gover
   - goveralls -coverprofile=gover.coverprofile -service=travis-ci
