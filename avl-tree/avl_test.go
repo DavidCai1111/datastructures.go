@@ -111,6 +111,24 @@ func (s AVLSuite) TestRightLeftRoation() {
 	s.Nil(tree.root.right.right)
 }
 
+func (s AVLSuite) TestGetHeight() {
+	tree := New()
+	tree.root.left = &node{val: ds.IntComparable(1)}
+	tree.root.left.left = &node{val: ds.IntComparable(1)}
+	tree.root.left.right = &node{val: ds.IntComparable(1)}
+	tree.root.left.left.left = &node{val: ds.IntComparable(1)}
+
+	s.Equal(3, tree.root.getHeight(0))
+}
+
+func (s AVLSuite) TestSelfBlance() {
+	s.tree.Insert(ds.IntComparable(10))
+	s.tree.Insert(ds.IntComparable(15))
+
+	s.Equal(3, s.tree.root.left.getHeight(1))
+	s.Equal(2, s.tree.root.right.getHeight(1))
+}
+
 func TestAVL(t *testing.T) {
 	suite.Run(t, new(AVLSuite))
 }
