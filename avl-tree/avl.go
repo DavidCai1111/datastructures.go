@@ -86,32 +86,32 @@ func (n *node) ensureBalance() {
 
 	// need left rotation
 	if n.left.isNil() && !n.right.isNil() && !n.right.right.isNil() {
-		*n.right.left = *n
+		n.right.left = &node{val: n.val}
 		*n = *n.right
 		return
 	}
 
 	// need right rotation
 	if n.right.isNil() && !n.left.isNil() && !n.left.left.isNil() {
-		*n.left.right = *n
+		n.left.right = &node{val: n.val}
 		*n = *n.left
 		return
 	}
 
 	// need left-right rotation
 	if n.right.isNil() && !n.left.isNil() && !n.left.right.isNil() {
-		*n.left.right.left = *n.left
+		n.left.right.left = &node{val: n.left.val}
 		*n.left = *n.left.right
-		*n.left.right = *n
+		n.left.right = &node{val: n.val}
 		*n = *n.left
 		return
 	}
 
 	// need right-left rotation
 	if n.left.isNil() && !n.right.isNil() && !n.right.left.isNil() {
-		*n.right.left.right = *n.right
+		n.right.left.right = &node{val: n.right.val}
 		*n.right = *n.right.left
-		*n.right.left = *n
+		n.right.left = &node{val: n.val}
 		*n = *n.right
 		return
 	}
