@@ -10,4 +10,4 @@ A collection of useful and concise Golang data structures.
 - [AVL tree](https://github.com/DavidCai1993/datastructures.go/tree/master/avl-tree)
 - [B tree (2-3 tree)](https://github.com/DavidCai1993/datastructures.go/tree/master/b-tree)
 - [Min-heap](https://github.com/DavidCai1993/datastructures.go/tree/master/min-heap)
-- [PAT-heap](https://github.com/DavidCai1993/datastructures.go/tree/master/pat-tree)
+- [PAT tree](https://github.com/DavidCai1993/datastructures.go/tree/master/pat-tree)

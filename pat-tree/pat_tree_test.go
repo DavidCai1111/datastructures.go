@@ -12,27 +12,45 @@ type PATSuite struct {
 	tree *Tree
 }
 
+func (s *PATSuite) SetupTest() {
+	s.tree = New("XMADAMYX")
+}
+
 func (s PATSuite) TestNew() {
-	tree := New("XMADAMYX")
+	s.Empty(s.tree.root.val)
 
-	s.Empty(tree.root.val)
+	s.Equal(6, len(s.tree.root.children))
+	s.Equal("X", s.tree.root.children[0].val)
+	s.Equal(2, len(s.tree.root.children[0].children))
+	s.Equal("MADAMYX$", s.tree.root.children[0].children[0].val)
+	s.Equal("$", s.tree.root.children[0].children[1].val)
+	s.Equal("M", s.tree.root.children[1].val)
+	s.Equal(2, len(s.tree.root.children[1].children))
+	s.Equal("ADAMYX$", s.tree.root.children[1].children[0].val)
+	s.Equal("YX$", s.tree.root.children[1].children[1].val)
+	s.Equal("A", s.tree.root.children[2].val)
+	s.Equal(2, len(s.tree.root.children[2].children))
+	s.Equal("DAMYX$", s.tree.root.children[2].children[0].val)
+	s.Equal("MYX$", s.tree.root.children[2].children[1].val)
+	s.Equal("DAMYX$", s.tree.root.children[3].val)
+	s.Equal("YX$", s.tree.root.children[4].val)
+	s.Equal("$", s.tree.root.children[5].val)
+}
 
-	s.Equal(6, len(tree.root.children))
-	s.Equal("X", tree.root.children[0].val)
-	s.Equal(2, len(tree.root.children[0].children))
-	s.Equal("MADAMYX$", tree.root.children[0].children[0].val)
-	s.Equal("$", tree.root.children[0].children[1].val)
-	s.Equal("M", tree.root.children[1].val)
-	s.Equal(2, len(tree.root.children[1].children))
-	s.Equal("ADAMYX$", tree.root.children[1].children[0].val)
-	s.Equal("YX$", tree.root.children[1].children[1].val)
-	s.Equal("A", tree.root.children[2].val)
-	s.Equal(2, len(tree.root.children[2].children))
-	s.Equal("DAMYX$", tree.root.children[2].children[0].val)
-	s.Equal("MYX$", tree.root.children[2].children[1].val)
-	s.Equal("DAMYX$", tree.root.children[3].val)
-	s.Equal("YX$", tree.root.children[4].val)
-	s.Equal("$", tree.root.children[5].val)
+func (s PATSuite) TestNewFailed() {
+	s.Panics(func() { New("") })
+	s.Panics(func() { New("ABC$") })
+}
+
+func (s PATSuite) TestHasSuffix() {
+	s.True(s.tree.HasSuffix("DAMYX"))
+	s.False(s.tree.HasSuffix("DDAMYX"))
+	s.True(s.tree.HasSuffix("XMADAMYX"))
+}
+
+func (s PATSuite) TestHasSuffixFailed() {
+	s.Panics(func() { s.tree.HasSuffix("") })
+	s.Panics(func() { s.tree.HasSuffix("X$") })
 }
 
 func TestPAT(t *testing.T) {

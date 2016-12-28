@@ -26,10 +26,10 @@ func New(s string) *Tree {
 
 func (t *Tree) insert(s string) {
 	if strings.HasSuffix(s, "$") {
-		panic(fmt.Errorf("string: %v should not have the sufix of '$'", s))
+		panic(fmt.Errorf("string: %v should not have the suffix of '$'", s))
 	}
 
-	if len(s) == 0 {
+	if s == "" {
 		panic(fmt.Errorf("s is a empty string"))
 	}
 
@@ -77,4 +77,38 @@ func (n *node) compress() {
 	for _, c := range n.children {
 		c.compress()
 	}
+}
+
+// HasSuffix tests if the string of the tree has the suffix s.
+func (t Tree) HasSuffix(s string) bool {
+	if strings.HasSuffix(s, "$") {
+		panic(fmt.Errorf("string: %v should not have the suffix of '$'", s))
+	}
+
+	if s == "" {
+		panic(fmt.Errorf("s is a empty string"))
+	}
+
+	s += "$"
+
+	n := t.root
+
+loop:
+	for s != "" {
+		for _, c := range n.children {
+			if strings.HasPrefix(s, c.val) {
+				if c.val[len(c.val)-1] == '$' {
+					return true
+				}
+
+				s = s[len(c.val):]
+				n = c
+				continue loop
+			}
+		}
+
+		return false
+	}
+
+	return false
 }
