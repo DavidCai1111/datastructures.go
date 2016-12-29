@@ -31,6 +31,17 @@ func (s IntComparableSuite) TestEqual() {
 	s.Zero((s.One.Compare(s.One)))
 }
 
+func (s IntComparableSuite) TestShift() {
+	var comparables = Comparables{
+		IntComparable(1),
+		IntComparable(2),
+		IntComparable(3),
+	}
+
+	s.Equal(IntComparable(1), comparables.Shift())
+	s.Equal(2, len(comparables))
+}
+
 func TestIntComparable(t *testing.T) {
 	suite.Run(t, new(IntComparableSuite))
 }

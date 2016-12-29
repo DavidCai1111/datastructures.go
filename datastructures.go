@@ -22,6 +22,17 @@ func (cs Comparables) Less(i, j int) bool {
 	return false
 }
 
+// Shift removes the fisrt element and returns it.
+func (cs *Comparables) Shift() Comparable {
+	if len(*cs) == 0 {
+		return nil
+	}
+
+	f := (*cs)[0]
+	*cs = (*cs)[1:]
+	return f
+}
+
 // Swap is to implements Sort.Interface .
 func (cs Comparables) Swap(i, j int) {
 	cs[i], cs[j] = cs[j], cs[i]
