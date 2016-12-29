@@ -12,5 +12,6 @@ cover:
 	go test -v -race -coverprofile=pat.coverprofile ./sort
 	gover
 	go tool cover -html=gover.coverprofile
+	rm -rf *.coverprofile
 
 .PHONY: test cover
