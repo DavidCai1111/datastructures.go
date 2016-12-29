@@ -18,3 +18,6 @@ A collection of useful and concise Golang data structures.
   - [Quick sort](https://github.com/DavidCai1993/datastructures.go/tree/master/sort/quick_sort.go)
   - [Selection sort](https://github.com/DavidCai1993/datastructures.go/tree/master/sort/selection_sort.go)
   - [Shell sort](https://github.com/DavidCai1993/datastructures.go/tree/master/sort/shell_sort.go)
+- [Search algorithms](https://github.com/DavidCai1993/datastructures.go/tree/master/search)
+  - [Binary search](https://github.com/DavidCai1993/datastructures.go/tree/master/search/binary_search.go)
+  - [Linear search](https://github.com/DavidCai1993/datastructures.go/tree/master/search/linear_search.go)

@@ -10,6 +10,7 @@ cover:
 	go test -v -race -coverprofile=avl.coverprofile ./avl-tree
 	go test -v -race -coverprofile=pat.coverprofile ./pat-tree
 	go test -v -race -coverprofile=pat.coverprofile ./sort
+	go test -v -race -coverprofile=pat.coverprofile ./search
 	gover
 	go tool cover -html=gover.coverprofile
 	rm -rf *.coverprofile

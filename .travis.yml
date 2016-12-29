@@ -14,5 +14,6 @@ script:
   - go test -v -race -coverprofile=avl.coverprofile ./avl-tree
   - go test -v -race -coverprofile=pat.coverprofile ./pat-tree
   - go test -v -race -coverprofile=pat.coverprofile ./sort
+  - go test -v -race -coverprofile=pat.coverprofile ./search
   - gover
   - goveralls -coverprofile=gover.coverprofile -service=travis-ci

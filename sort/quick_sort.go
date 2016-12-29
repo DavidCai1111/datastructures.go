@@ -4,7 +4,7 @@ import ds "github.com/DavidCai1993/datastructures.go"
 
 // QuickSort sorts the given []Comparable by quick sort algorithm.
 // Time complexity O(nlogn)
-// Space complexity O(nlogn)
+// Space complexity O(n)
 func QuickSort(c ds.Comparables) ds.Comparables {
 	if len(c) <= 1 {
 		return c
