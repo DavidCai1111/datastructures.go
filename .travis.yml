@@ -13,5 +13,6 @@ script:
   - go test -v -race -coverprofile=mh.coverprofile ./min-heap
   - go test -v -race -coverprofile=avl.coverprofile ./avl-tree
   - go test -v -race -coverprofile=pat.coverprofile ./pat-tree
+  - go test -v -race -coverprofile=pat.coverprofile ./sort
   - gover
   - goveralls -coverprofile=gover.coverprofile -service=travis-ci

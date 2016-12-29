@@ -11,3 +11,4 @@ A collection of useful and concise Golang data structures.
 - [B tree (2-3 tree)](https://github.com/DavidCai1993/datastructures.go/tree/master/b-tree)
 - [Min-heap](https://github.com/DavidCai1993/datastructures.go/tree/master/min-heap)
 - [PAT tree](https://github.com/DavidCai1993/datastructures.go/tree/master/pat-tree)
+- [sort](https://github.com/DavidCai1993/datastructures.go/tree/master/sort)

@@ -9,6 +9,7 @@ cover:
 	go test -v -race -coverprofile=bt.coverprofile ./b-tree
 	go test -v -race -coverprofile=avl.coverprofile ./avl-tree
 	go test -v -race -coverprofile=pat.coverprofile ./pat-tree
+	go test -v -race -coverprofile=pat.coverprofile ./sort
 	gover
 	go tool cover -html=gover.coverprofile
 
