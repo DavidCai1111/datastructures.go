@@ -5,7 +5,7 @@ type Comparable interface {
 	Compare(Comparable) int
 }
 
-// Comparables represents []Comparable
+// Comparables represents []Comparable .
 type Comparables []Comparable
 
 // Len is to implements Sort.Interface .
