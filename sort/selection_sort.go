@@ -1,6 +1,8 @@
 package sort
 
-import ds "github.com/DavidCai1993/datastructures.go"
+import (
+	ds "github.com/DavidCai1993/datastructures.go"
+)
 
 // SelectionSort sorts the given []Comparable by selection sort algorithm.
 // Time complexity O(n^2)

@@ -1,6 +1,8 @@
 package search
 
-import ds "github.com/DavidCai1993/datastructures.go"
+import (
+	ds "github.com/DavidCai1993/datastructures.go"
+)
 
 // LinearSearch finds the given element's location by linear search algorithm.
 // Time complexity O(n)

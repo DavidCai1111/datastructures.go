@@ -1,6 +1,8 @@
 package minheap
 
-import ds "github.com/DavidCai1993/datastructures.go"
+import (
+	ds "github.com/DavidCai1993/datastructures.go"
+)
 
 // MinHeap represents a binary min-heap which implements
 // heap.Interface .

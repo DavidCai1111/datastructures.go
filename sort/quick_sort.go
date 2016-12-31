@@ -1,6 +1,8 @@
 package sort
 
-import ds "github.com/DavidCai1993/datastructures.go"
+import (
+	ds "github.com/DavidCai1993/datastructures.go"
+)
 
 // QuickSort sorts the given []Comparable by quick sort algorithm.
 // Time complexity O(nlogn)

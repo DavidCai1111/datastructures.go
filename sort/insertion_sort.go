@@ -1,6 +1,8 @@
 package sort
 
-import ds "github.com/DavidCai1993/datastructures.go"
+import (
+	ds "github.com/DavidCai1993/datastructures.go"
+)
 
 // InsertionSort sorts the given []Comparable by insertion sort algorithm.
 // Time complexity O(n^2)

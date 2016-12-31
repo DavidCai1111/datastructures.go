@@ -1,6 +1,8 @@
 package sort
 
-import ds "github.com/DavidCai1993/datastructures.go"
+import (
+	ds "github.com/DavidCai1993/datastructures.go"
+)
 
 // BubbleSort sorts the given []Comparable by bubble sort algorithm.
 // Time complexity O(n^2)
