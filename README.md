@@ -11,6 +11,7 @@ A collection of useful and concise Golang data structures.
 - [B tree (2-3 tree)](https://github.com/DavidCai1993/datastructures.go/tree/master/b-tree)
 - [Min-heap](https://github.com/DavidCai1993/datastructures.go/tree/master/min-heap)
 - [PAT tree](https://github.com/DavidCai1993/datastructures.go/tree/master/pat-tree)
+- [Stack](https://github.com/DavidCai1993/datastructures.go/tree/master/list/stack.go)
 - [Sort algorithms](https://github.com/DavidCai1993/datastructures.go/tree/master/sort)
   - [Bubble sort](https://github.com/DavidCai1993/datastructures.go/tree/master/sort/bubble_sort.go)
   - [Insertion sort](https://github.com/DavidCai1993/datastructures.go/tree/master/sort/insertion_sort.go)

@@ -24,12 +24,6 @@ func (s UndirectedGraphSuite) TestVertexs() {
 	s.Equal(10, s.g.Vertexs())
 }
 
-func (s UndirectedGraphSuite) TestEdges() {
-	s.Equal(0, s.g.Edges())
-	s.g.addEdge(0, 1)
-	s.Equal(1, s.g.Edges())
-}
-
 func (s UndirectedGraphSuite) TestEdgesFailed() {
 	s.Panics(func() { s.g.addEdge(11, 1) })
 	s.Panics(func() { s.g.addEdge(1, 11) })

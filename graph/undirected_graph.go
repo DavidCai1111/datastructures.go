@@ -8,17 +8,12 @@ const errInvaliVertexNumber = "graph: invalid vertex number %v"
 
 // UndirectedGraph represents an undirected graph.
 type UndirectedGraph struct {
-	bags  [][]*vertex
-	edges int
+	bags [][]*vertex
 }
 
 type vertex struct {
 	i         int
 	isVisited bool
-}
-
-func (v vertex) findPathTo(s []int, w int) ([]int, bool) {
-	return nil, false
 }
 
 // New returns a new undirected graph instance with v vertexs.
@@ -31,20 +26,9 @@ func (g UndirectedGraph) Vertexs() int {
 	return len(g.bags)
 }
 
-// Edges returns the number of edges of the graph.
-func (g UndirectedGraph) Edges() int {
-	return g.edges
-}
-
 // addEdge adds an edge to the graph.
 func (g *UndirectedGraph) addEdge(v, w int) {
-	if v < 0 || v >= len(g.bags) {
-		panic(fmt.Errorf(errInvaliVertexNumber, v))
-	}
-
-	if w < 0 || w >= len(g.bags) {
-		panic(fmt.Errorf(errInvaliVertexNumber, w))
-	}
+	g.checkVertexs(v, w)
 
 	for _, b := range g.bags[v] {
 		if b.i == w {
@@ -52,17 +36,14 @@ func (g *UndirectedGraph) addEdge(v, w int) {
 		}
 	}
 
-	g.bags[v] = append(g.bags[v], &vertex{i: w})
-
 	for _, b := range g.bags[w] {
 		if b.i == v {
 			panic(fmt.Errorf(errInvaliVertexNumber, v))
 		}
 	}
 
+	g.bags[v] = append(g.bags[v], &vertex{i: w})
 	g.bags[w] = append(g.bags[w], &vertex{i: v})
-
-	g.edges++
 }
 
 // GetAdjacentVertexs returns all adjacent vertexs of v in the graph.
@@ -100,13 +81,7 @@ func (g *UndirectedGraph) MaxDegree() int {
 
 // PathTo returns path from vertex v to w using breadth first traversal.
 func (g *UndirectedGraph) PathTo(v, w int) ([]int, bool) {
-	if v < 0 || v >= len(g.bags) {
-		panic(fmt.Errorf(errInvaliVertexNumber, v))
-	}
-
-	if w < 0 || w >= len(g.bags) {
-		panic(fmt.Errorf(errInvaliVertexNumber, w))
-	}
+	g.checkVertexs(v, w)
 
 	if s, ok := g.pathTo(v, w, []int{v}); ok {
 		return s, true
@@ -142,4 +117,14 @@ func (g *UndirectedGraph) HasPathTo(v, w int) bool {
 	}
 
 	return false
+}
+
+func (g UndirectedGraph) checkVertexs(v, w int) {
+	if v < 0 || v >= len(g.bags) {
+		panic(fmt.Errorf(errInvaliVertexNumber, v))
+	}
+
+	if w < 0 || w >= len(g.bags) {
+		panic(fmt.Errorf(errInvaliVertexNumber, w))
+	}
 }
