@@ -23,4 +23,4 @@ A collection of useful and concise Golang data structures.
   - [Binary search](https://github.com/DavidCai1993/datastructures.go/tree/master/search/binary_search.go)
   - [Linear search](https://github.com/DavidCai1993/datastructures.go/tree/master/search/linear_search.go)
 - [Graph](https://github.com/DavidCai1993/datastructures.go/tree/master/graph)
-  - [Undirected graph](https://github.com/DavidCai1993/datastructures.go/tree/master/graph/graph.go)
+  - [Undirected graph](https://github.com/DavidCai1993/datastructures.go/tree/master/graph/undirected_graph.go)

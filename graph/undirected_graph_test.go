@@ -6,50 +6,50 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
-type GraphSuite struct {
+type UndirectedGraphSuite struct {
 	suite.Suite
 
-	g *Graph
+	g *UndirectedGraph
 }
 
-func (s *GraphSuite) SetupTest() {
+func (s *UndirectedGraphSuite) SetupTest() {
 	s.g = New(10)
 }
 
-func (s GraphSuite) TestNew() {
+func (s UndirectedGraphSuite) TestNew() {
 	s.Equal(10, len(s.g.bags))
 }
 
-func (s GraphSuite) TestVertexs() {
+func (s UndirectedGraphSuite) TestVertexs() {
 	s.Equal(10, s.g.Vertexs())
 }
 
-func (s GraphSuite) TestEdges() {
+func (s UndirectedGraphSuite) TestEdges() {
 	s.Equal(0, s.g.Edges())
 	s.g.addEdge(0, 1)
 	s.Equal(1, s.g.Edges())
 }
 
-func (s GraphSuite) TestEdgesFailed() {
+func (s UndirectedGraphSuite) TestEdgesFailed() {
 	s.Panics(func() { s.g.addEdge(11, 1) })
 	s.Panics(func() { s.g.addEdge(1, 11) })
 }
 
-func (s GraphSuite) TestGetAdjacentVertexs() {
+func (s UndirectedGraphSuite) TestGetAdjacentVertexs() {
 	s.g.addEdge(0, 1)
 	s.g.addEdge(0, 2)
 
 	s.Equal([]int{1, 2}, s.g.GetAdjacentVertexs(0))
 }
 
-func (s GraphSuite) TestDegree() {
+func (s UndirectedGraphSuite) TestDegree() {
 	s.g.addEdge(0, 1)
 	s.g.addEdge(0, 2)
 
 	s.Equal(2, s.g.Degree(0))
 }
 
-func (s GraphSuite) TestMaxDegree() {
+func (s UndirectedGraphSuite) TestMaxDegree() {
 	s.g.addEdge(0, 1)
 	s.g.addEdge(0, 2)
 	s.g.addEdge(1, 2)
@@ -57,7 +57,7 @@ func (s GraphSuite) TestMaxDegree() {
 	s.Equal(2, s.g.MaxDegree())
 }
 
-func (s GraphSuite) TestPathTo() {
+func (s UndirectedGraphSuite) TestPathTo() {
 	s.g.addEdge(0, 1)
 	s.g.addEdge(1, 2)
 	s.g.addEdge(1, 3)
@@ -74,7 +74,7 @@ func (s GraphSuite) TestPathTo() {
 	s.False(ok)
 }
 
-func (s GraphSuite) TestHasPath() {
+func (s UndirectedGraphSuite) TestHasPath() {
 	s.g.addEdge(0, 1)
 	s.g.addEdge(0, 2)
 	s.g.addEdge(1, 2)
@@ -84,6 +84,6 @@ func (s GraphSuite) TestHasPath() {
 	s.True(s.g.HasPathTo(0, 2))
 }
 
-func TestGraph(t *testing.T) {
-	suite.Run(t, new(GraphSuite))
+func TestUndirectedGraph(t *testing.T) {
+	suite.Run(t, new(UndirectedGraphSuite))
 }

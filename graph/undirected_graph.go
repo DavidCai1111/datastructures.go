@@ -6,8 +6,8 @@ import (
 
 const errInvaliVertexNumber = "graph: invalid vertex number %v"
 
-// Graph represents an undirected graph.
-type Graph struct {
+// UndirectedGraph represents an undirected graph.
+type UndirectedGraph struct {
 	bags  [][]*vertex
 	edges int
 }
@@ -22,22 +22,22 @@ func (v vertex) findPathTo(s []int, w int) ([]int, bool) {
 }
 
 // New returns a new undirected graph instance with v vertexs.
-func New(v int) *Graph {
-	return &Graph{bags: make([][]*vertex, v)}
+func New(v int) *UndirectedGraph {
+	return &UndirectedGraph{bags: make([][]*vertex, v)}
 }
 
 // Vertexs returns the number of vertexs of the graph.
-func (g Graph) Vertexs() int {
+func (g UndirectedGraph) Vertexs() int {
 	return len(g.bags)
 }
 
 // Edges returns the number of edges of the graph.
-func (g Graph) Edges() int {
+func (g UndirectedGraph) Edges() int {
 	return g.edges
 }
 
 // addEdge adds an edge to the graph.
-func (g *Graph) addEdge(v, w int) {
+func (g *UndirectedGraph) addEdge(v, w int) {
 	if v < 0 || v >= len(g.bags) {
 		panic(fmt.Errorf(errInvaliVertexNumber, v))
 	}
@@ -66,7 +66,7 @@ func (g *Graph) addEdge(v, w int) {
 }
 
 // GetAdjacentVertexs returns all adjacent vertexs of v in the graph.
-func (g *Graph) GetAdjacentVertexs(v int) []int {
+func (g *UndirectedGraph) GetAdjacentVertexs(v int) []int {
 	if v < 0 || v >= len(g.bags) {
 		panic(fmt.Errorf(errInvaliVertexNumber, v))
 	}
@@ -81,12 +81,12 @@ func (g *Graph) GetAdjacentVertexs(v int) []int {
 }
 
 // Degree returns the degree of the vertexs v.
-func (g *Graph) Degree(v int) int {
+func (g *UndirectedGraph) Degree(v int) int {
 	return len(g.GetAdjacentVertexs(v))
 }
 
 // MaxDegree returns the max degree of the graph.
-func (g *Graph) MaxDegree() int {
+func (g *UndirectedGraph) MaxDegree() int {
 	max := 0
 
 	for _, adj := range g.bags {
@@ -99,7 +99,7 @@ func (g *Graph) MaxDegree() int {
 }
 
 // PathTo returns path from vertex v to w using breadth first traversal.
-func (g *Graph) PathTo(v, w int) ([]int, bool) {
+func (g *UndirectedGraph) PathTo(v, w int) ([]int, bool) {
 	if v < 0 || v >= len(g.bags) {
 		panic(fmt.Errorf(errInvaliVertexNumber, v))
 	}
@@ -115,7 +115,7 @@ func (g *Graph) PathTo(v, w int) ([]int, bool) {
 	return nil, false
 }
 
-func (g *Graph) pathTo(v, w int, s []int) ([]int, bool) {
+func (g *UndirectedGraph) pathTo(v, w int, s []int) ([]int, bool) {
 	for _, n := range g.bags[v] {
 		if n.isVisited {
 			break
@@ -136,7 +136,7 @@ func (g *Graph) pathTo(v, w int, s []int) ([]int, bool) {
 }
 
 // HasPathTo checks whether the graph has a path from vertex v to w.
-func (g *Graph) HasPathTo(v, w int) bool {
+func (g *UndirectedGraph) HasPathTo(v, w int) bool {
 	if _, ok := g.PathTo(v, w); ok {
 		return true
 	}
